@@ -48,6 +48,7 @@ data Record0 (f :: * -> *)
     )
 
 instance FunctorB Record0
+instance DistributiveB Record0
 instance TraversableB Record0
 instance ApplicativeB Record0
 instance ConstraintsB Record0
@@ -61,6 +62,7 @@ data Record1 f
 
 
 instance FunctorB Record1
+instance DistributiveB Record1
 instance TraversableB Record1
 instance ApplicativeB Record1
 instance ConstraintsB Record1
@@ -78,6 +80,7 @@ data Record1S f
 
 
 instance FunctorB Record1S
+instance DistributiveB Record1S
 instance TraversableB Record1S
 instance ApplicativeB Record1S
 instance ConstraintsB Record1S
@@ -121,6 +124,7 @@ data Record3S f
 
 
 instance FunctorB Record3S
+instance DistributiveB Record3S
 instance TraversableB Record3S
 instance ApplicativeB Record3S
 instance ConstraintsB Record3S
@@ -185,6 +189,7 @@ data CompositeRecord f
   deriving (Generic, Typeable)
 
 instance FunctorB CompositeRecord
+-- instance DistributiveB CompositeRecord
 instance TraversableB CompositeRecord
 instance ApplicativeB CompositeRecord
 instance ConstraintsB CompositeRecord
@@ -222,6 +227,7 @@ data InfRec f
   deriving (Generic, Typeable)
 
 instance FunctorB InfRec
+-- instance DistributiveB InfRec
 instance TraversableB InfRec
 instance ApplicativeB InfRec
 instance ConstraintsB InfRec
@@ -281,6 +287,7 @@ data ParB b (f :: * -> *)
   deriving (Generic, Typeable)
 
 instance FunctorB b => FunctorB (ParB b)
+-- instance FunctorB b => DistributiveB (ParB b)
 instance TraversableB b => TraversableB (ParB b)
 instance ApplicativeB b => ApplicativeB (ParB b)
 instance ConstraintsB b => ConstraintsB (ParB b)
