@@ -32,6 +32,14 @@ instance
   {-# INLINE gdistribute #-}
 
 
+instance
+  ( Functor f
+  ) => GDistributive n f U1 U1
+  where
+  gdistribute _ = const U1
+  {-# INLINE gdistribute #-}
+
+
 fstF :: (l :*: r) a -> l a
 fstF (x :*: _y) = x
 
@@ -60,7 +68,7 @@ instance
   ) =>
   GDistributive n f (Rec (P n g a) (g a)) (Rec (P n (Compose f g) a) (Compose f g a))
   where
-  gdistribute pn = Rec . K1 . Compose . id . fmap (unK1 . unRec)
+  gdistribute _ = Rec . K1 . Compose . id . fmap (unK1 . unRec)
   {-# INLINE gdistribute #-}
 
 instance
@@ -69,5 +77,5 @@ instance
   ) =>
   GDistributive n f (Rec (h (P n g a)) (h (g a))) (Rec (h (P n (Compose f g) a)) (h (Compose f g a)))
   where
-  gdistribute pn = Rec . K1 . fmap Compose . distribute . fmap (unK1 . unRec)
+  gdistribute _ = Rec . K1 . fmap Compose . distribute . fmap (unK1 . unRec)
   {-# INLINE gdistribute #-}
